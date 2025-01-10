@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wallet Addresses</title>
+    <link rel="icon" href="https://i.ibb.co/WBpXHQV/Tux-svg.png" type="image/png" sizes="52x52">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #222;
+            color: #fff;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #444;
+            border-radius: 10px;
+            background-color: #333;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .wallet {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #444;
+            border-radius: 5px;
+            background-color: #444;
+        }
+
+        .wallet h2 {
+            margin-top: 0;
+        }
+
+        .address {
+            display: flex;
+            justify-content: space-between; 
+            align-items: center; 
+        }
+
+        .address p {
+            margin: 5px 0;
+            flex-grow: 1; 
+            overflow-wrap: break-word; 
+            white-space: normal; 
+        }
+
+        .copy-icon {
+            color: #fff; 
+            cursor: pointer; 
+            font-size: 20px; 
+        }
+
+        .copy-icon:hover {
+            color: #ccc; 
+        }
+
+        .copy-message {
+            display: none; 
+            color: #fff; 
+            margin-left: 10px; 
+        }
+
+        
+        a {
+            color: white; 
+            text-decoration: none; 
+        }
+
+        a:hover {
+            text-decoration: underline; 
+        }
+
+    
+        @media (max-width: 600px) {
+            .address p {
+                font-size: 14px; 
+                overflow-wrap: break-word; 
+                white-space: normal; 
+                word-wrap: break-word; 
+                overflow: hidden; 
+                text-overflow: ellipsis; /
+            }
+            
+            .copy-icon {
+                font-size: 18px; 
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Wallet Addresses</h1>
+
+        <div class="wallet">
+            <h2>Solana (SOL)</h2>
+            <div class="address">
+                <p id="SolanaAdresess"><a href="https://explorer.solana.com/address/96tNYc3DBorjLazDpaR5Z3h6euttozemJ9ScmWj2ifDy" target="_blank">96tNYc3DBorjLazDpaR5Z3h6euttozemJ9ScmWj2ifDy</a></p>
+                <i class="fas fa-copy copy-icon" onclick="copyToClipboard('SolanaAdresess', 'solCopyMessage')" title="Copy to clipboard"></i>
+                <span id="solCopyMessage" class="copy-message">Copied</span>
+            </div>
+        </div>
+
+        <div class="wallet">
+            <h2>Bitcoin (BTC)</h2>
+            <div class="address">
+                <p id="btcAddress"><a href="https://www.blockchain.com/explorer/addresses/btc/bc1qf6pawynwvmn59nkvzjydxd5jt9wvmgpv5qeut8" target="_blank">bc1qf6pawynwvmn59nkvzjydxd5jt9wvmgpv5qeut8</a></p>
+                <i class="fas fa-copy copy-icon" onclick="copyToClipboard('btcAddress', 'btcCopyMessage')" title="Copy to clipboard"></i>
+                <span id="btcCopyMessage" class="copy-message">Copied</span>
+            </div>
+        </div>
+
+        <div class="wallet">
+            <h2>Ethereum (ETH)</h2>
+            <div class="address">
+                <p id="ethAddress"><a href="https://www.blockchain.com/explorer/addresses/eth/0xfBdC5837966EE29C6565E1E4410fCb0dAcB87c20" target="_blank">0xfBdC5837966EE29C6565E1E4410fCb0dAcB87c20</a></p>
+                <i class="fas fa-copy copy-icon" onclick="copyToClipboard('ethAddress', 'ethCopyMessage')" title="Copy to clipboard"></i>
+                <span id="ethCopyMessage" class="copy-message">Copied</span>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function copyToClipboard(elementId, messageId) {
+            const addressText = document.getElementById(elementId).innerText;
+
+            const tempInput = document.createElement('textarea');
+            tempInput.value = addressText;
+
+            document.body.appendChild(tempInput);
+
+            tempInput.select();
+            
+            document.execCommand('copy');
+
+            document.body.removeChild(tempInput);
+
+            const messageElement = document.getElementById(messageId);
+            messageElement.style.display = 'inline'; 
+           
+           setTimeout(() => {
+               messageElement.style.display = 'none';
+           }, 2000);
+        }
+    </script>
+</body>
+</html>
